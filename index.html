@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. William | International Cable Seller</title>
+    
+    <!-- AOS Library kwa ajili ya animation za scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts kwa maandishi mazuri -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome kwa icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* HERO SECTION - Sehemu ya juu ya Daktari */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hii ni animation ya nyuzi za DNA/Cable kuonyesha "International Cable" */
+        .dna-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            background: repeating-linear-gradient(
+                45deg,
+                #64ffda,
+                #64ffda 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            animation: moveBg 20s linear infinite;
+        }
+
+        @keyframes moveBg {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 2s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #ccd6f6;
+            text-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+        }
+
+        .hero h1 span {
+            color: #64ffda;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #8892b0;
+            margin: 20px 0;
+            letter-spacing: 3px;
+        }
+
+        .hero .sub-tagline {
+            font-size: 1.2rem;
+            color: #64ffda;
+            border: 1px solid #64ffda;
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sehemu ya Catalogue */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 30px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0a192f;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #64ffda;
+            margin: 15px auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 20px 50px;
+            max-width: 1400px;
+            margin: 0 auto 80px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-img {
+            height: 250px;
+            background: linear-gradient(45deg, #0a192f, #1d4ed8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img i {
+            font-size: 80px;
+            color: rgba(100, 255, 218, 0.4);
+            transition: 0.5s;
+        }
+
+        .product-card:hover .product-img i {
+            transform: scale(1.3) rotate(15deg);
+            color: rgba(100, 255, 218, 0.8);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 1.8rem;
+            color: #0a192f;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #059669;
+            margin: 10px 0;
+        }
+
+        .price small {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-details {
+            background: #f0fdf4;
+            color: #059669;
+            border: 2px solid #059669;
+        }
+
+        .btn-details:hover {
+            background: #059669;
+            color: white;
+        }
+
+        .btn-order {
+            background: #25D366;
+            color: white;
+            border: 2px solid #25D366;
+        }
+
+        .btn-order:hover {
+            background: #128C7E;
+            border-color: #128C7E;
+        }
+
+        /* Modal ya Maelezo ya Dawa */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 25px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: modalSlide 0.5s ease;
+            position: relative;
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #0a192f, #1e3a8a);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .detail-item {
+            margin: 20px 0;
+            border-left: 4px solid #64ffda;
+            padding-left: 20px;
+        }
+
+        .detail-item h4 {
+            color: #0a192f;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a192f;
+            color: #ccd6f6;
+            text-align: center;
+            padding: 40px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .product-grid {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="dna-bg"></div>
+        <div class="hero-content" data-aos="zoom-in">
+            <h1>Dr. <span>William</span></h1>
+            <p>INTERNATIONAL CABLE SELLER</p>
+            <div class="sub-tagline">
+                <i class="fas fa-dna"></i> Quality Pharmaceuticals & Health Solutions <i class="fas fa-globe-africa"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- CATALOGUE SECTION -->
+    <h2 class="section-title" data-aos="fade-up">💊 Orodha ya Dawa/List Here</h2>
+    
+    <div class="product-grid" id="productGrid">
+        <!-- Dawa zitawekwa hapa na JavaScript -->
+    </div>
+
+    <!-- MODAL YA MAELEZO -->
+    <div class="modal" id="drugModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+                <h2 id="modalTitle"></h2>
+                <p id="modalSubtitle"></p>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Dr. William - International Cable Seller. Live Healthly.</p>
+        <p style="margin-top:10px;"><i class="fab fa-whatsapp"></i> ORDER NOW: +255 762 286 282</p>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Anzisha AOS Animation Library
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Database ya Dawa (Unaweza kuongeza zaidi hapa)
+        const drugsDatabase = [
+            {
+                id: 1,
+                name: "Zetroni",
+                category: "Antibiotic / Immune Booster",
+                price: "25,000",
+                icon: "fa-capsules",
+                description: "Zetroni ni dawa ya kisasa inayotumika kutibu aina mbalimbali za maambukizi ya bakteria. Inafanya kazi kwa kuzuia ukuaji wa bakteria nyeti.",
+                usage: "Tumia kama alivyoelekeza daktari. Kwa kawaida inachukuliwa kwa mdomo (vidonge) kwa siku 3-5. Inashauriwa kunywa maji mengi.",
+                quality: "Imethibitishwa na TFDA / FDA. Ina uwezo wa juu wa kufyonzwa mwilini (bioavailability) na ina madhara madogo sana tumboni ukilinganisha na dawa nyingine za kundi hilo.",
+                sideEffects: "Kichefuchefu kidogo, maumivu ya kichwa (haya ni ya muda mfupi)."
+            },
+            {
+                id: 2,
+                name: "CardiLife",
+                category: "Heart & Circulation",
+                price: "45,000",
+                icon: "fa-heart-pulse",
+                description: "CardiLife ni mchanganyiko wa asili na wa kisayansi kusaidia afya ya moyo na mzunguko wa damu. Inafaa kwa watu wenye shinikizo la damu.",
+                usage: "Kidonge kimoja mara mbili kwa siku baada ya chakula. Usitumie pamoja na pombe.",
+                quality: "Premium Grade A+. Imetengenezwa kwa teknolojia ya Ujerumani. Haina madhara kwa ini.",
+                sideEffects: "Inaweza kusababisha usingizi mwanzoni mwa matumizi."
+            },
+            {
+                id: 3,
+                name: "Relief-X Gel",
+                category: "Pain Management",
+                price: "18,000",
+                icon: "fa-joint",
+                description: "Geli ya kisasa ya kupaka kwenye viungo na misuli. Inaponya maumivu ya baridi yabisi, mgongo, na maumivu ya mwili kwa dakika chache.",
+                usage: "Paka kidogo kwenye eneo lenye maumivu mara 2-3 kwa siku. Osha mikono baada ya kupaka.",
+                quality: "Imetengenezwa kwa viungo vya asili vya mdalasini na pilipili manga. Haina madhara kwa ngozi nyeti.",
+                sideEffects: "Hisia ya joto kidogo kwenye ngozi, hii ni kawaida."
+            }
+        ];
+
+        // Kazi ya Kuchora Bidhaa kwenye Ukurasa
+        function renderProducts() {
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = ''; // Futa kilichopo
+
+            drugsDatabase.forEach(drug => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-aos', 'fade-up');
+                
+                card.innerHTML = `
+                    <div class="product-img">
+                        <i class="fas ${drug.icon}"></i>
+                    </div>
+                    <div class="product-info">
+                        <span style="color: #64748b; font-size: 0.9rem;">${drug.category}</span>
+                        <h3>${drug.name}</h3>
+                        <div class="price">TZS ${drug.price} <small>/ kwa dozi</small></div>
+                        <div class="btn-group">
+                            <button class="btn btn-details" onclick="openDrugDetails(${drug.id})">
+                                <i class="fas fa-info-circle"></i> Maelezo
+                            </button>
+                            <button class="btn btn-order" onclick="orderViaWhatsApp('${drug.name}')">
+                                <i class="fab fa-whatsapp"></i> Oda Sasa
+                            </button>
+                        </div>
+                    </div>
+                `;
+                productGrid.appendChild(card);
+            });
+            
+            // Refresh AOS ili ionyeshe animation za cards mpya
+            AOS.refresh();
+        }
+
+        // Kazi ya Kufungua Modal ya Maelezo
+        function openDrugDetails(id) {
+            const drug = drugsDatabase.find(d => d.id === id);
+            if (!drug) return;
+
+            document.getElementById('modalTitle').textContent = drug.name;
+            document.getElementById('modalSubtitle').textContent = drug.category;
+
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="detail-item">
+                    <h4><i class="fas fa-bullseye" style="color: #059669;"></i> KAZI YAKE</h4>
+                    <p>${drug.description}</p>
+                </div>
+                <div class="detail-item">
+                    <h4><i class="fas fa-prescription" style="color: #2563eb;"></i> MATUMIZI</h4>
+                    <p>${drug.usage}</p>
+                </div>
+                <div class="detail-item">
+                    <h4><i class="fas fa-star" style="color: #eab308;"></i> QUALITY</h4>
+                    <p>${drug.quality}</p>
+                </div>
+                <div class="detail-item">
+                    <h4><i class="fas fa-exclamation-triangle" style="color: #dc2626;"></i> MADHARA (Side Effects)</h4>
+                    <p>${drug.sideEffects}</p>
+                </div>
+                <button class="btn btn-order" style="width:100%; margin-top:20px; padding:15px;" onclick="orderViaWhatsApp('${drug.name}')">
+                    <i class="fab fa-whatsapp"></i> Wasiliana kuhusu ${drug.name} kupitia WhatsApp
+                </button>
+            `;
+
+            document.getElementById('drugModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Zuia background kusroll
+        }
+
+        // Kazi ya Kufunga Modal
+        function closeModal() {
+            document.getElementById('drugModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Funga modal ukibofya nje ya box
+        window.onclick = function(event) {
+            const modal = document.getElementById('drugModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Kazi ya Kuagiza kupitia WhatsApp
+        function orderViaWhatsApp(drugName) {
+            // Badilisha namba hii iwe namba yako halisi ya WhatsApp (format: 255762286282)
+            const phoneNumber = '255712345678'; 
+            const message = `Habari Dr. William, ninaomba kueleweshwa zaidi kuhusu ${drugName} niliyoiona kwenye International Cable Seller.`;
+            const whatsappUrl = `https://wa.me/${255762286282}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Chora bidhaa ukurasa unapofunguka
+        document.addEventListener('DOMContentLoaded', renderProducts);
+    </script>
+</body>
+</html>
